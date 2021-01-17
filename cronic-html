@@ -7,6 +7,17 @@
 # Public Domain CC0: http://creativecommons.org/publicdomain/zero/1.0/
 
 set -eu
+DIR="$(dirname "$0")"
+
+# Constants
+CONF_GLOBAL_FILE=/etc/cronic/cronic.conf
+CONF_USER_FILE=~/.cronic.conf
+TEMPLATE_DEFAULT_FILE="$DIR/templates/plain.tmpl.sh"
+
+# Read config:
+#     TEMPLATE_FILE: Path to the template. Allows to override the default template
+[ -f "$CONF_GLOBAL_FILE" ] && source "$CONF_GLOBAL_FILE"
+[ -f "$CONF_USER_FILE" ] && source "$CONF_USER_FILE"
 
 # Temporal files for script output
 TMP=$(mktemp -d)
@@ -43,7 +54,7 @@ if [ $RESULT -ne 0 -o -s "$ERR" ]
 		[ $TRACE != $ERR ] && TRACE_CONTENT="$NL$(cat $TRACE)"
 
     # Delegate report to template
-    source "./templates/plain.tmpl.sh" 
+    source "${TEMPLATE_FILE:-$TEMPLATE_DEFAULT_FILE}"
 fi
 
 # Cleanup
