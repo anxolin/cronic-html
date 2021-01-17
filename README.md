@@ -28,6 +28,11 @@ The received email will contain:
 
 You will never find yourself redirecting the output to `/dev/null` 😎
 
+<p align="center">
+  <img align="center" width="800" src="docs/cronic-color.png">
+</p>
+
+
 ## What advantages has Cronic HTML over Cronic
 Cronic is a great and simple script, and does his work very well, however due to this simplicity, it cannot handle colors.
 
