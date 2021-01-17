@@ -8,11 +8,13 @@
 
 set -eu
 
+# Temporal files for script output
 TMP=$(mktemp -d)
 OUT=$TMP/cronic.out
 ERR=$TMP/cronic.err
 TRACE=$TMP/cronic.trace
 
+# Run script
 set +e
 "$@" >$OUT 2>$TRACE
 RESULT=$?
@@ -26,9 +28,11 @@ else
     ERR=$TRACE
 fi
 
+# If the script exited with a non-zero code, or if it printed in the SYSERR
 if [ $RESULT -ne 0 -o -s "$ERR" ]
     then
 
+    # Prepare template vars
     COMMAND="$@"
 		NL=$'\n'
     OUT_CONTENT="`cat $OUT`"
@@ -38,9 +42,11 @@ if [ $RESULT -ne 0 -o -s "$ERR" ]
 		[ ! -z "$ERR_CONTENT" ] && ERR_CONTENT="$NL$ERR_CONTENT"
 		[ $TRACE != $ERR ] && TRACE_CONTENT="$NL$(cat $TRACE)"
 
+    # Delegate report to template
     source "./templates/plain.tmpl.sh" 
 fi
 
+# Cleanup
 rm -rf "$TMP"
 
 exit $RESULT
