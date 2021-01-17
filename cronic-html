@@ -7,12 +7,13 @@
 # Public Domain CC0: http://creativecommons.org/publicdomain/zero/1.0/
 
 set -eu
-DIR="$(dirname "$0")"
 
 # Constants
-CONF_GLOBAL_FILE=/etc/cronic/cronic.conf
-CONF_USER_FILE=~/.cronic.conf
-TEMPLATE_DEFAULT_FILE="$DIR/templates/plain.tmpl.sh"
+CONF_DIR=/etc/cronic-html
+CONF_FILE_NAME=cronic-html.conf
+CONF_USER_FILE="~/.$CONF_FILE_NAME"
+CONF_GLOBAL_FILE="$CONF_DIR/$CONF_FILE_NAME"
+TEMPLATE_DEFAULT_FILE="$CONF_DIR/templates/html.tmpl.sh"
 
 # Read config:
 #     TEMPLATE_FILE: Path to the template. Allows to override the default template
