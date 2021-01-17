@@ -1,12 +1,12 @@
 # Cronic HTML
 A cure for Cron's chronic email problem.
 
-The Disease:
+🤒 The Disease:
 ```bash
 0 1 * * * backup >/dev/null 2>&1
 ```
 
-The Cure:
+💊 The Cure:
 ```bash
 0 1 * * * cronic-html backup
 ```
@@ -38,24 +38,25 @@ Cronic is a great and simple script, and does his work very well, however due to
 
 Cronic HTML allows your script to output ANSI colors 🌈
 
-Using ANSI colors in your script will make easier to read the logs, so why why to have a black and white output when we 
-can make our scripts pretty?
+Using ANSI colors in your script will make easier to read the logs and understand why a cron script has failed.
+Why doing black and white when we can do colors?
 
 
 ## Templates
 Cronic HTML includes a basic template system.
 
-* Templates allow to customize the output from cron execution scripts.
-* Templates are a plain bash script that has some output. 
-* Templates are sourced in the cronic-html script, if there was any errors in it execution
-* Templates receive some environment variables with the result of the script executed by cronic-html
-* Templates must print in the standard output (stdout)
+Templates:
+* Allow to customize the output from cron execution scripts.
+* Are a plain bash script that has some output. 
+* Are sourced in the cronic-html script
+* Receive some environment variables with the result of the script executed by `cronic-html`
+* Must print in the standard output (stdout)
 
 
 ## Template Parameters
 The environment variables available for the template are:
 
-| Parameter      | Required | Description |
+| Parameter      | Required | Description                                                                              |
 | -------------- | -------- | ---------------------------------------------------------------------------------------- |
 | `COMMAND`      |   Yes    | Command executed by cronic. Your script. i.e. `/opt/backup/your-backup --color -v`       |
 | `RESULT`       |   Yes    | Exit code from the script. i.e. `133`                                                    |
@@ -69,9 +70,9 @@ The environment variables available for the template are:
 
 | Name                 | Path                               | Default | Description                                                                                         |
 | -------------------- | ---------------------------------- | --------|---------------------------------------------------------------------------------------------------- |
-| **HTML Color**       | `/etc/cronic-html/templates/color.html.sh`          |   Yes   | Simple HTML template with support for ANSI colors 🌈. Depends on `ansi2html`. It can be used as a reference to create your own theme! |
-| **HtML Simple**      |  `/etc/cronic-html/templates/simple.html.sh`        |   No    | Simple HTML templates with no dependencies. It can be used as a reference to create your own theme! |
-| **Original Cronic**  | `/etc/cronic-html/templates/original-cronic.txt.sh` |   No    | Outputs the same text the original `cronic` script writes.                                          |
+| **HTML Color**       | [/etc/cronic-html/templates/color.html.sh](./templates/color.html.sh)            |   Yes   | Simple HTML template with support for ANSI colors 🌈. Depends on `ansi2html`. It can be used as a reference to create your own theme! |
+| **HtML Simple**      |  [/etc/cronic-html/templates/simple.html.sh](./templates/simple.html.shh)        |   No    | Simple HTML templates with no dependencies. It can be used as a reference to create your own theme! |
+| **Original Cronic**  | [/etc/cronic-html/templates/original-cronic.txt.sh](./templates/original-cronic.txt.sh) |   No    | Outputs the same text the original `cronic` script writes.                                          |
 
 
 # Config
@@ -84,7 +85,7 @@ template or create your own.
 
 The config files will be sourced, so they can re-define the following variables:
 
-| Variable         | Required | Default Description                                                                     |
+| Variable         | Required | Default value                                                                           |
 | ---------------- | -------- | ----------------------------------------------------------------------------------------|
 | `TEMPLATE_FILE`  |   No     | `/etc/cronic-html/templates/html.tmpl.sh`                                               |
 
