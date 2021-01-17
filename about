@@ -1,0 +1,18 @@
+Cronic HTML - cron job report wrapper with template support
+
+Copyright 2020 Angel Rodriguez https://github.com/anxolin.
+No rights reserved, whatsoever.
+
+Public Domain CC0: http://creativecommons.org/publicdomain/zero/1.0/
+
+CREDITS:
+  - Original script forked from Cronic v3, originally from Chuck Houpt
+    Licensed Public Domain CC0: http://creativecommons.org/publicdomain/zero/1.0
+    Copyright: 2007-2016 Chuck Houpt
+    https://habilis.net/cronic/
+
+  - Debian package Copyright: 2016, 2018 Daniel Lange
+    https://salsa.debian.org/debian/cronic
+
+  - Modify cronic to add a config file, template support, html support and return the original exit code
+    Copyright 2020 Angel Rodriguez https://github.com/anxolin.
