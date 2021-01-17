@@ -31,6 +31,7 @@ set +e
 RESULT=$?
 set -e
 
+# Capture debug output (set -x)
 PATTERN="^${PS4:0:1}\\+${PS4:1}"
 if grep -aq "$PATTERN" $TRACE
 then
