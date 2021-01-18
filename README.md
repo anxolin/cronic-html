@@ -30,6 +30,13 @@ You will never find yourself redirecting the output to `/dev/null` 😎
 
 <p align="center">
   <img align="center" width="800" src="docs/cronic-color.png">
+  <sub>Example of a script returning <strong>133</strong> and some outputs in <strong>stdout</strong>, <strong>stderr</strong>, and <strong>trace-debug</strong></
+</p>
+<br /><br />
+
+<p align="center">
+  <img align="center" width="800" src="docs/cronic-color-success.png"> <br />
+  <sub>Example of a script returning <strong>0</strong> and some outputs in <strong>stdout</strong> and <strong>stderr</strong></sub>
 </p>
 
 
