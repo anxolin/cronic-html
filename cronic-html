@@ -47,6 +47,7 @@ if [ $RESULT -ne 0 -o -s "$ERR" ]
 
     # Prepare template vars
     COMMAND="$@"
+    HOSTNAME="`hostname`"
 		NL=$'\n'
     OUT_CONTENT="`cat $OUT`"
     ERR_CONTENT="`cat $ERR`"
@@ -54,6 +55,7 @@ if [ $RESULT -ne 0 -o -s "$ERR" ]
 		[ ! -z "$OUT_CONTENT" ] && OUT_CONTENT="$NL$OUT_CONTENT"
 		[ ! -z "$ERR_CONTENT" ] && ERR_CONTENT="$NL$ERR_CONTENT"
 		[ $TRACE != $ERR ] && TRACE_CONTENT="$NL$(cat $TRACE)"
+    TRACE_CONTENT="${TRACE_CONTENT:-}"
 
     # Delegate report to template
     source "${TEMPLATE_FILE:-$TEMPLATE_DEFAULT_FILE}"

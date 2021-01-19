@@ -67,6 +67,7 @@ The environment variables available for the template are:
 | -------------- | -------- | ---------------------------------------------------------------------------------------- |
 | `COMMAND`      |   Yes    | Command executed by cronic. Your script. i.e. `/opt/backup/your-backup --color -v`       |
 | `RESULT`       |   Yes    | Exit code from the script. i.e. `133`                                                    |
+| `HOSTNAME`     |   Yes   | Host name i.e. `example.com`                                                    |
 | `OUT_CONTENT`  |   Yes    | Output of the script (stdout) i.e. `Starting backup...`                                  |
 | `ERR_CONTENT`  |   Yes    | Output of the script (stderr) i.e. `No such file or directory: /home/foo`                |
 | `TRACE_CONTENT`|   No     | Trace/debug output of the script (when the script runs in debug mode, with `set -x`) i.e. `+ echo Debug` |
