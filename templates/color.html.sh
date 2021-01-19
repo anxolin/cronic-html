@@ -1,7 +1,7 @@
 #!/bin/bash
 
   [ ! -z "$ERR_CONTENT" ] && ERR_TEXT="
-  <h2> ERROR OUTPUT</h2>
+  <h2>❌ ERROR OUTPUT</h2>
   `echo -e "$ERR_CONTENT" | ansi2html -nw`
   "
 
@@ -32,12 +32,17 @@
       Cronic detected failure or error output for the command:
       <pre>
         $COMMAND
-      </pre>
+      </pre>      
 
       <h2>RESULT CODE</h2>
       <span style="font-size: 16px; background-color: $RESULT_COLOR; color: #fff; padding: 10px; font-weight: 600; margin: 0 0 10px 0; display: inline-block; width: 35px; text-align: center;">
         $RESULT
       </span>
+
+      <h2>HOST NAME</h2>
+      <pre>
+        $HOSTNAME  
+      </pre>
 
       ${ERR_TEXT:-}
       ${OUT_TEXT:-}

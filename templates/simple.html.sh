@@ -27,9 +27,14 @@ cat << _EOF_
     </pre>
 
     <h2>RESULT CODE</h2>
-     <span style="font-size: 16px; background-color: $RESULT_COLOR; color: #fff; padding: 10px; font-weight: 600; margin: 0 0 10px 0; display: inline-block; width: 35px; text-align: center;">
+    <span style="font-size: 16px; background-color: $RESULT_COLOR; color: #fff; padding: 10px; font-weight: 600; margin: 0 0 10px 0; display: inline-block; width: 35px; text-align: center;">
       $RESULT
     </span>
+
+    <h2>HOST NAME</h2>
+    <pre>
+      $HOSTNAME  
+    </pre>
 
     <h2>❌ ERROR OUTPUT</h2>
     <pre>
