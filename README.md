@@ -95,8 +95,10 @@ The config files will be sourced, so they can re-define the following variables:
 pwd
 | Variable         | Required | Default value                                                                           |
 | ---------------- | -------- | ----------------------------------------------------------------------------------------|
-| `TEMPLATE_FILE`  |   No     | `/etc/cronic-html/templates/html.tmpl.sh`                                               |
-| `DEBUG`          |   No     | `undefined` (set to `true` to debug the script)                                               |
+| `TEMPLATE_FILE`  |   No     | `/etc/cronic-html/templates/html.tmpl.sh` |
+| `DEBUG`          |   No     | `undefined` (set to `true` to debug the script) |
+| `SDTERR_IS_ERROR`|   No     | `true` (set to `false` to not consider an error successful script with some `stderr` output) |
+
 
 
 For example:
@@ -126,6 +128,10 @@ export TEMPLATE_FILE=./templates/original-cronic.txt.sh
 # Successful execution (but with some output in stderr)
 #   - Although the script was successful, it shows all the information because there were some error output
 ./cronic-html bash -c 'echo "For now all is good" && >&2 echo "but something bad happened" && exit 0'
+
+# Successful execution (with some output in stderr + SDTERR_IS_ERROR=false setting)
+#   - Although there's some output ni stderr, now the result is considered successful
+SDTERR_IS_ERROR=false ./cronic-html bash -c 'echo "For now all is good" && >&2 echo "but something bad happened" && exit 0'
 
 # Failed execution with (debug enabled)
 #    - It will have an additional section that shows the TRACE
