@@ -105,3 +105,34 @@ For example:
 TEMPLATE_FILE=/etc/cronic-html/templates/color.html.sh
 ```
 
+
+
+# Examples / Development
+
+First setup some template by running the following command:
+```bash
+export TEMPLATE_FILE=./templates/original-cronic.txt.sh
+```
+
+```bash
+# Successfull execution
+#    - There shouldn't be any output
+./cronic-html bash -c 'echo "I feel lucky today"'
+
+# Failed execution
+#   - You will see the error code and the standard output
+./cronic-html bash -c 'echo "I am not sure about this" && exit 42'
+
+# Successful execution (but with some output in stderr)
+#   - Although the script was successful, it shows all the information because there were some error output
+./cronic-html bash -c 'echo "For now all is good" && >&2 echo "but something bad happened" && exit 0'
+
+# Failed execution with (debug enabled)
+#    - It will have an additional section that shows the TRACE
+./cronic-html bash -c 'echo "Not Debug" && set -x && echo "Debug" && exit 42'
+
+# All at once (Fail + stderr output + Trace)
+#    - Show all the fields, as expected
+./cronic-html bash -c 'echo "Not Debug" && set -x && echo "Debug" && >&2 echo "Now I am sure, it will blow up" && exit 33'
+ ```
+
