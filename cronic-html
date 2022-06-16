@@ -23,6 +23,8 @@ TEMPLATE_DEFAULT_FILE="$CONF_DIR/templates/html.tmpl.sh"
 # Enable debug
 [[ ! -z "${DEBUG:-}" ]] && set -x
 
+SDTERR_IS_ERROR="${SDTERR_IS_ERROR:true}"
+
 # Temporal files for script output
 TMP=$(mktemp -d)
 OUT=$TMP/cronic.out
@@ -45,7 +47,7 @@ else
 fi
 
 # If the script exited with a non-zero code, or if it printed in the SYSERR
-if [ $RESULT -ne 0 -o -s "$ERR" ]
+if [[ $RESULT -ne 0 || -s "$ERR" ]]
     then
 
     # Prepare template vars
