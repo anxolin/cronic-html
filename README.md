@@ -92,10 +92,11 @@ template or create your own.
 * `/etc/cronic-html/cronic-html.conf`
 
 The config files will be sourced, so they can re-define the following variables:
-
+pwd
 | Variable         | Required | Default value                                                                           |
 | ---------------- | -------- | ----------------------------------------------------------------------------------------|
 | `TEMPLATE_FILE`  |   No     | `/etc/cronic-html/templates/html.tmpl.sh`                                               |
+| `DEBUG`          |   No     | `undefined` (set to `true` to debug the script)                                               |
 
 
 For example:
@@ -103,3 +104,4 @@ For example:
 ```bash
 TEMPLATE_FILE=/etc/cronic-html/templates/color.html.sh
 ```
+

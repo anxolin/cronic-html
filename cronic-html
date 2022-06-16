@@ -11,7 +11,7 @@ set -eu
 # Constants
 CONF_DIR=/etc/cronic-html
 CONF_FILE_NAME=cronic-html.conf
-CONF_USER_FILE="~/.$CONF_FILE_NAME"
+CONF_USER_FILE="$HOME/.$CONF_FILE_NAME"
 CONF_GLOBAL_FILE="$CONF_DIR/$CONF_FILE_NAME"
 TEMPLATE_DEFAULT_FILE="$CONF_DIR/templates/html.tmpl.sh"
 
@@ -19,6 +19,9 @@ TEMPLATE_DEFAULT_FILE="$CONF_DIR/templates/html.tmpl.sh"
 #     TEMPLATE_FILE: Path to the template. Allows to override the default template
 [ -f "$CONF_GLOBAL_FILE" ] && source "$CONF_GLOBAL_FILE"
 [ -f "$CONF_USER_FILE" ] && source "$CONF_USER_FILE"
+
+# Enable debug
+[[ ! -z "${DEBUG:-}" ]] && set -x
 
 # Temporal files for script output
 TMP=$(mktemp -d)
